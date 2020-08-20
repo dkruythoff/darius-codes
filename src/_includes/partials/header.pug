@@ -1,0 +1,7 @@
+header
+  strong= site.title
+  nav
+    ul
+      each page in collections.pages
+        li
+          a(href=page.url)= page.data.title
