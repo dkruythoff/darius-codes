@@ -12,5 +12,7 @@ html(lang='en')
     main
       if title
         h1= title
+      if summary
+        p= summary
       | !{content}
     include ../partials/footer.pug
