@@ -1,8 +1,11 @@
 header
-  strong.title= site.title
-  span.subtitle= site.subtitle
+  a.site-title(href='/')
+    span.site-title__txt darius
+    span.site-title__dot .
+    span.site-title__txt codes
+  p.site-description= site.description
   nav
-    ul
+    ul.navigation
       each page in collections.pages
-        li
+        li.navigation__item
           a(href=page.url)= page.data.title

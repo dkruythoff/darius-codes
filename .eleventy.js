@@ -19,7 +19,6 @@ module.exports = function (eleventyConfig) {
   })
   eleventyConfig.addWatchTarget(path.join(dirRoot, '_scss'))
 
-
   eleventyConfig.addPassthroughCopy({ "static/fonts": "fonts" })
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.setDataDeepMerge(true)

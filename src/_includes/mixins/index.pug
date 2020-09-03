@@ -1,0 +1,3 @@
+- var zeropad = (num) => num < 10 ? `0${num}` : num
+- var renderDate = (date) => [date.getFullYear(),zeropad(date.getMonth()+1),zeropad(date.getDate())].join('-')
+- var renderPost = (post) => `${renderDate(post.date)} - ${post.data.title}`

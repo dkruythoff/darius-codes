@@ -1,6 +1,132 @@
 @import "fonts";
 
+$font-base-size: 14px;
+$font-max-size: 32px;
+$vp-max-width: (($font-max-size - $font-base-size) * 100);
+
 :root {
+  --color-bg: rgb(30, 30, 30);
+  --color-fg: rgb(212, 212, 212);
+  --color-highlight: rgb(81, 201, 175);
+  --color-focus: rgb(170,5,5);
+  // rgb(242, 71, 72);
+
   font-family: Palanquin, sans-serif;
-  font-size: 18px;
+  font-size: calc(1vw + #{$font-base-size});
+  font-weight: 100;
+  line-height: 1.4;
+
+  @media (min-width: $vp-max-width) {
+    font-size: $font-max-size;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  line-height: 1.2;
+  margin: 2rem 0 0.5rem 0;
+  color: var(--color-highlight);
+}
+
+a {
+  color: var(--color-fg);
+  text-decoration-color: var(--color-highlight);
+  font-weight: 400;
+
+  &:hover {
+    color: var(--color-highlight);
+  }
+  &:focus,
+  &:active {
+    // outline: dashed var(--color-focus);
+    color: var(--color-focus);
+    outline: none;
+  }
+}
+
+header,
+footer {
+  text-align: center;
+}
+
+header,
+main,
+footer {
+  margin: 0 auto;
+  padding: 0 1.75rem;
+  max-width: 44rem;
+  overflow: auto;
+}
+
+main {
+  padding-bottom: 2rem;
+
+  & > h1:first-of-type {
+    margin-top: 1rem;
+  }
+}
+
+p {
+  margin: 0.5em 0 1em 0;
+}
+
+pre {
+  display: inline-block;
+  width: auto;
+  overflow-x: auto;
+
+  display: none;
+}
+
+.site {
+  &-title {
+    font-size: 2rem;
+    text-decoration: none;
+    vertical-align: bottom;
+    margin-bottom: -1em;
+
+    &__dot {
+      color: var(--color-highlight);
+      font-size: 1.5em;
+      display: inline-block;
+      margin: 0 0.2rem;
+    }
+
+    &:hover &__dot {
+      color: var(--color-fg);
+    }
+  }
+
+  &-description {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.8rem;
+  }
+}
+
+.navigation {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    margin: 0 0.5em;
+  }
 }
