@@ -10,7 +10,7 @@ module.exports = function (eleventyConfig) {
     if (outputPath.endsWith('.css')) {
       return await new Promise((resolve, reject) => {
         sass.render(
-          { data: content, includePaths: [dirRoot] },
+          { data: content, includePaths: [dirRoot], outputStyle: 'compressed' },
           (error, result) => error ? reject(error) : resolve(result.css)
         )
       })
