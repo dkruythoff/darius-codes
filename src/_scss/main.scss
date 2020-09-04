@@ -9,7 +9,6 @@ $vp-max-width: (($font-max-size - $font-base-size) * 100);
   --color-fg: rgb(212, 212, 212);
   --color-highlight: rgb(81, 201, 175);
   --color-focus: rgb(170,5,5);
-  // rgb(242, 71, 72);
 
   font-family: Palanquin, sans-serif;
   font-size: calc(1vw + #{$font-base-size});
@@ -54,7 +53,6 @@ a {
   }
   &:focus,
   &:active {
-    // outline: dashed var(--color-focus);
     color: var(--color-focus);
     outline: none;
   }
@@ -129,4 +127,47 @@ pre {
   &__item {
     margin: 0 0.5em;
   }
+}
+
+.posts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    border-left: solid 0.1rem var(--color-highlight);
+    padding: 0 1rem;
+    margin: 2rem 0;
+
+    a {
+      text-decoration: none;
+
+      h2 {
+        margin-top: 0.5rem;
+        text-decoration: underline;
+        color: inherit;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      &:link,
+      &:visited {
+        h2 {
+          color: var(--color-highlight);
+        }
+      }
+      &:active,
+      &:focus {
+        h2 {
+          color: var(--color-focus);
+        }
+      }
+    }
+  }
+}
+
+.post {
+
 }

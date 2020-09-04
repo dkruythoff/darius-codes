@@ -6,7 +6,7 @@ tags:
 
 include _includes/mixins/index.pug
 
-ul
+ul.posts-list
   each post in collections.posts.slice().reverse()
-    li
-      a(href=post.url)= renderPost(post)
+    li.posts-list__item
+      +postListItem(post)

@@ -1,3 +1,12 @@
+- var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December']
 - var zeropad = (num) => num < 10 ? `0${num}` : num
 - var renderDate = (date) => [date.getFullYear(),zeropad(date.getMonth()+1),zeropad(date.getDate())].join('-')
+- var renderDateStr = (date) => [date.getDate(),monthNames[date.getMonth()],date.getFullYear()].join(' ')
 - var renderPost = (post) => `${renderDate(post.date)} - ${post.data.title}`
+
+mixin postListItem(post)
+  article
+    a(href=post.url)
+      time(datetime=renderDate(post.date))= renderDateStr(post.date)
+      h2= post.data.title
+      p= post.data.summary
