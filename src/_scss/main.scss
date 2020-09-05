@@ -84,14 +84,6 @@ p {
   margin: 0.5em 0 1em 0;
 }
 
-pre {
-  display: inline-block;
-  width: auto;
-  overflow-x: auto;
-
-  display: none;
-}
-
 .site {
   &-title {
     font-size: 2.5rem;
@@ -166,8 +158,4 @@ pre {
       }
     }
   }
-}
-
-.post {
-
 }

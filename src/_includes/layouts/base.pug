@@ -10,6 +10,10 @@ html(lang='en')
       meta(name="viewport", content="width=device-width,initial-scale=1")
       meta(name="description", content=site.description)
       link(media="screen",rel="stylesheet", href="/styles.css")
+      link(rel="stylesheet",href="/prism-vsc-dark-plus.css",media="print",onload="this.media='screen'; this.onload=null;")
+      noscript
+        link(rel="stylesheet",href="/prism-vsc-dark-plus.css")
+      
   body
     include ../partials/header.pug
     main

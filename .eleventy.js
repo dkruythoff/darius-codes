@@ -1,4 +1,5 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss")
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
 const sass = require('sass')
 const path = require('path')
 
@@ -20,7 +21,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget(path.join(dirRoot, '_scss'))
 
   eleventyConfig.addPassthroughCopy({ "static/fonts": "fonts" })
+  eleventyConfig.addPassthroughCopy({ "static/prism-vsc-dark-plus.css": "prism-vsc-dark-plus.css" })
   eleventyConfig.addPlugin(pluginRss)
+  eleventyConfig.addPlugin(syntaxHighlight)
   eleventyConfig.setDataDeepMerge(true)
 
   return {
