@@ -1,0 +1,273 @@
+---
+title: "JS from the ground up: Fundamentals"
+summary: "Seeing how many people struggle to learn JS, and how long I've been working with it myself, I've decided to help out a bit. Here's how to get started added JS to a static HTML document."
+date: 2020-09-21
+tags:
+  - js
+  - fundamentals
+---
+
+## Adding JS to an existing document
+
+Imagine having just learned HTML and maybe even CSS. You got this sweet static document, but you want to add some behaviour to it. That's where JS comes in.
+
+Let's say you created the following clock:
+```html
+<!doctype html>
+<html lang=en>
+<title>clock example</title>
+<meta charset=utf-8>
+<style>
+:root {
+  font-size: 10vw;
+  font-family: Verdana, Arial, sans-serif;
+}
+.clock {
+  font-weight: bold;
+  color: #ddd;
+  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  background: #333;
+  padding: 0.25rem;
+}
+</style>
+<span class="clock">
+  <span class="hours">19</span>:<span class="minutes">27</span>:<span class="seconds">33</span>
+</span>
+```
+Which gives us this:  
+![clock image](data:image/png;base64,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)  
+Not too shabby!
+
+Ok, so this thing will only be right once per day.  
+Let's make it dynamic with some JS. 
+
+With this being a short and simple demo, we'll add the script to the page itself.  
+For more complex stuff, it's better to put script in its own file though.
+Since I used extremely simplified (yet valid) HTML, we can just add a `<script>` tag at the end of the document.
+
+Inside the `<script>` tag, we'll need the current time.  
+To get the current time, we can use Javascript's `Date` object.  
+
+```javascript
+const time = new Date()
+```
+
+## Getting the time
+
+Great, now we have the current time.  
+We'll need the hours, minutes, and seconds, like so:  
+
+```javascript
+const hours = time.getHours()
+const minutes = time.getMinutes()
+const seconds = time.getSeconds()
+```
+
+For more on the `Date` object check the [doc page for JS's Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+Now we have everything we need to update our clock.
+Our `<script>` tag at the end of the document should look like this:
+
+```javascript
+const time = new Date()
+const hours = time.getHours()
+const minutes = time.getMinutes()
+const seconds = time.getSeconds()
+```
+
+## Getting the HTML elements to update
+
+Now we can update our clock HTML.  
+In order to do that, we need to retrieve the HTML elements that we want to update.  
+This can be done with `document.querySelector`, like so:
+
+```javascript
+const hoursElement = document.querySelector('.hours')
+const minutesElement = document.querySelector('.minutes')
+const secondsElement = document.querySelector('.seconds')
+```
+
+Since these classes are unique in this document, we can use them to retrieve the elements with a class (dot) selector. The variables `hoursElement`, `minutesElement`, and `secondsElement` now reference the three elements in our HTML, so we can update them from the script.
+
+For more info on `document.querySelector` see the [doc page for document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+
+So, now we have the values for the clock, and the clock elements on the page.  
+Our script should look like the following:
+
+```javascript
+const time = new Date()
+const hours = time.getHours()
+const minutes = time.getMinutes()
+const seconds = time.getSeconds()
+const hoursElement = document.querySelector('.hours')
+const minutesElement = document.querySelector('.minutes')
+const secondsElement = document.querySelector('.seconds')
+```
+
+## Updating HTML elements
+
+Now we can set the element values to the current time. We can do this by setting the `innerText` property of our elements to the corresponding value from the `Date` object instance, like so: 
+
+```javascript
+hoursElement.innerText = hours
+minutesElement.innerText = minutes
+seconds Element.innerText = seconds
+```
+
+The full script should look like this:
+
+```javascript
+const time = new Date()
+const hours = time.getHours()
+const minutes = time.getMinutes()
+const seconds = time.getSeconds()
+const hoursElement = document.querySelector('.hours')
+const minutesElement = document.querySelector('.minutes')
+const secondsElement = document.querySelector('.seconds')
+
+hoursElement.innerText = hours
+minutesElement.innerText = minutes
+secondsElement.innerText = seconds
+```
+
+If you run this, you might notice that the clock isn't showing 19:27:33 any more. Our clock is being updated!  
+
+## Updating the time
+
+You might notice that this only happens once. This makes perfect sense, since we only wrote code to update the clock once.  If we want to keep it updated, we'll have to update it every second, the smallest time unit on our clock.  
+In order to run similar code multiple times, we'd best create a function.  
+You know, one of these:
+
+```javascript
+function() {
+  // do stuff
+}
+```
+
+Now, we could jam all our code into a function, but we'll only need to update the same elements. Therefore, we could leave the element lookups outside of the function, like so: 
+
+```javascript
+const hoursElement = document.querySelector('.hours')
+const minutesElement = document.querySelector('.minutes')
+const secondsElement = document.querySelector('.seconds')
+
+function updateClock() {
+  const time = new Date()
+  const hours = time.getHours()
+  const minutes = time.getMinutes()
+  const seconds = time.getSeconds()
+
+  hoursElement.innerText = hours
+  minutesElement.innerText = minutes
+  secondsElement.innerText = seconds
+}
+```
+
+Since JS's function context allows access to stuff right outside the function, we can access variables right outside the function, so we only need to look up the elements once.  
+Now that we have our function, we'll need to call it, like so:
+
+```javascript
+updateClock()
+```
+
+More about function can be found at the [doc page for Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function#Constructor)
+
+The entire script should now look like this: 
+
+```javascript
+const hoursElement = document.querySelector('.hours')
+const minutesElement = document.querySelector('.minutes')
+const secondsElement = document.querySelector('.seconds')
+
+function updateClock() {
+  const time = new Date()
+  const hours = time.getHours()
+  const minutes = time.getMinutes()
+  const seconds = time.getSeconds()
+
+  hoursElement.innerText = hours
+  minutesElement.innerText = minutes
+  secondsElement.innerText = seconds
+}
+
+updateClock()
+```
+
+If you run this the clock should update, but still only once.  
+We'll need to fun this function every second. For that we can use JS's built-in `setInterval` function:
+
+```javascript
+const timeout = setInterval(updateClock, 1000)
+```
+
+This will keep running the `updateClock` function every second (1000 milliseconds) indefinitely. Indefinite is a very long time, so we grab the output of the `setInterval` function to use it as a reference in case we ever want to stop the timeout.
+
+Our entire script should now look like this and function the way we'd like:
+
+```javascript
+const hoursElement = document.querySelector('.hours')
+const minutesElement = document.querySelector('.minutes')
+const secondsElement = document.querySelector('.seconds')
+
+function updateClock() {
+  const time = new Date()
+  const hours = time.getHours()
+  const minutes = time.getMinutes()
+  const seconds = time.getSeconds()
+
+  hoursElement.innerText = hours
+  minutesElement.innerText = minutes
+  secondsElement.innerText = seconds
+}
+
+const timeout = setInterval(updateClock, 1000)
+```
+
+## Bonus: Zero pad numbers
+
+Now that we have a working clock, you might be as annoyed as I am about any number below 10 deforming our clock. It makes sense, since they are numbers and those aren't prefixed. We'll add a `zeropad` function:
+
+```javascript
+function zeropad(number) {
+  return number < 10 ? `0${number}` : number
+}
+```
+
+This function takes a number and checks if it's below 10. If it is, it returns a string with 0 and the number. If it's not, it returns the original number.  
+We can just add the function to our script, and call it upon the setting of innerText on the digits. The whole thing would look like this:
+
+```javascript
+const hoursElement = document.querySelector('.hours')
+const minutesElement = document.querySelector('.minutes')
+const secondsElement = document.querySelector('.seconds')
+
+function updateClock() {
+  const time = new Date()
+  const hours = time.getHours()
+  const minutes = time.getMinutes()
+  const seconds = time.getSeconds()
+
+  hoursElement.innerText = zeropad(hours)
+  minutesElement.innerText = zeropad(minutes)
+  secondsElement.innerText = zeropad(seconds)
+}
+
+function zeropad(number) {
+  return number < 10 ? `0${number}` : number
+}
+
+const timeout = setInterval(updateClock, 1000)
+```
+
+Our clock is now updating properly and not jumping when numbers fall below 10.  
+We've touched on the basics of adding JS to an existing HTML document, manipulating the document from the JS code, writing functions, and repeating functionality.
+
+Stay tuned for the Death Clock update that might or might not happen...  
+
+![Death Clock](data:image/jpeg;base64,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)
