@@ -21,6 +21,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget(path.join(dirRoot, '_scss'))
 
   eleventyConfig.addPassthroughCopy({ "static/fonts": "fonts" })
+  eleventyConfig.addPassthroughCopy({ "static/images": "images" })
   eleventyConfig.addPassthroughCopy({ "static/prism-vsc-dark-plus.css": "prism-vsc-dark-plus.css" })
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.addPlugin(syntaxHighlight)
