@@ -1,7 +1,7 @@
 module.exports = {
-  title: 'Darius Kruythoff',
-  subtitle: 'Ramblings of a web developer',
-  url: 'https://darius.codes',
+  title: 'darius.codes',
+  subtitle: 'Just another web development blog',
+  url: 'https://darius.codes/',
   feedUrl: 'https://darius.codes/feed.xml',
   author: {
     name: 'Darius Kruythoff',

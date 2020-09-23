@@ -1,3 +1,8 @@
 module.exports = {
-  tags: 'posts'
+  tags: 'posts',
+  eleventyComputed: {
+    eleventyTags: {
+      arr: data => data.tags.filter(t => t !== 'posts')
+    }
+  }
 }
