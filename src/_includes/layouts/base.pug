@@ -19,7 +19,7 @@ html(lang='en')
     main
       if title
         h1= title
-      if tags.includes('posts')
+      if tags && tags.includes('posts')
         span= renderDate(page.date)
       if summary
         p= summary
